@@ -2,10 +2,10 @@ import requests
 import sys
 
 
-def save_picture(addr, s):
+def save_picture(addr, s, m):
     map_request = f"http://static-maps.yandex.ru/1.x/?" \
         f"ll={','.join(map(str, addr))}&" \
-        f"l=map&" \
+        f"l={m}&" \
         f"z={s}"
     response = requests.get(map_request)
     if not response:
