@@ -4,7 +4,7 @@ import sys
 
 def save_picture(addr, s):
     map_request = f"http://static-maps.yandex.ru/1.x/?" \
-        f"ll={','.join(map(str, get_coords(addr)))}&" \
+        f"ll={','.join(map(str, addr))}&" \
         f"l=map&" \
         f"z={s}"
     response = requests.get(map_request)
@@ -13,7 +13,7 @@ def save_picture(addr, s):
         print(map_request)
         print("Http статус:", response.status_code, "(", response.reason, ")")
         sys.exit(1)
-    map_f = f"{addr}.png"
+    map_f = f"map.png"
     with open(map_f, "wb") as file:
         file.write(response.content)
 
