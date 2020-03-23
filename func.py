@@ -58,6 +58,12 @@ def render(screen, map_f, m):
     intro_rect.x = 610
     intro_rect.y = 70
     screen.blit(string_rendered, intro_rect)
+    # Сброс поискового результата
+    string_rendered = font.render(f'Сброс поискового результата (Q)', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = 100
+    screen.blit(string_rendered, intro_rect)
 
 
 class Find(QWidget):
