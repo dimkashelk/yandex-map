@@ -72,7 +72,6 @@ while running:
                 app.quit()
                 ex, app = None, None
                 pygame.init()
-                app.quit()
                 screen = pygame.display.set_mode((1000, 450))
                 address_ll = list(get_coords(address))
                 if pt == '':
