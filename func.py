@@ -39,7 +39,7 @@ def get_coords(place):
     return x, y
 
 
-def render(screen, map_f, m, address):
+def render(screen, map_f, m, address, postal_index=False):
     y = 10
     screen.blit(pygame.image.load(map_f), (0, 0))
     font = pygame.font.Font(None, 38)
@@ -52,6 +52,13 @@ def render(screen, map_f, m, address):
     y += 30
     # Смена режима показа
     string_rendered = font.render(f'Для смены нажмите T', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = y
+    screen.blit(string_rendered, intro_rect)
+    y += 30
+    # включение/выключение почтового индекса
+    string_rendered = font.render(f'Почтовый индекс(I)', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
     intro_rect.y = y
@@ -85,6 +92,14 @@ def render(screen, map_f, m, address):
         intro_rect.y = y
         screen.blit(string_rendered, intro_rect)
         y += 30
+    # почтовый индекс
+    if postal_index:
+        string_rendered = font.render(f'Почтовый индекс: {postal_index}', 0, pygame.Color('white'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.x = 610
+        intro_rect.y = y
+        screen.blit(string_rendered, intro_rect)
+        y += 30
 
 
 def get_full_address(address):
@@ -104,6 +119,21 @@ def get_full_address(address):
     for i in dop:
         full += i['name'] + ', '
     return full[:-2]
+
+
+def get_postal_code(address):
+    apikey = "40d1649f-0493-4b70-98ba-98533de7710b"
+    map_request = f"https://geocode-maps.yandex.ru/1.x/?" \
+        f"geocode={address}&" \
+        f"apikey={apikey}&" \
+        f"format=json"
+    response = requests.get(map_request)
+    if not response:
+        print('Try again...')
+        exit(0)
+    json = response.json()
+    return json['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+        'metaDataProperty']['GeocoderMetaData']['Address']['postal_code']
 
 
 class Find(QWidget):

@@ -9,6 +9,7 @@ dop_m = {'map': 'схема', 'sat': 'спутник', 'sat,skl': 'гибрид'
 m = 'map'
 map_file = f'map.png'
 pt = ''
+postal_index = False
 pygame.init()
 screen = pygame.display.set_mode((1100, 450))
 save_picture(address_ll, size, m, pt)
@@ -83,7 +84,12 @@ while running:
                 pt = ''
                 save_picture(address_ll, size, m, pt)
                 full_address = ''
+            elif event.key == pygame.K_i:
+                if not postal_index:
+                    postal_index = get_postal_code(address)
+                else:
+                    postal_index = False
     screen.fill((0, 0, 0))
-    render(screen, map_file, dop_m[m], full_address)
+    render(screen, map_file, dop_m[m], full_address, postal_index)
     pygame.display.flip()
 pygame.quit()
