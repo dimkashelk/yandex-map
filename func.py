@@ -1,5 +1,7 @@
 import requests
 import sys
+import pygame
+from PyQt5.QtWidgets import *
 
 
 def save_picture(addr, s, m):
@@ -33,3 +35,39 @@ def get_coords(place):
         exit(0)
     x, y = map(float, toponym["Point"]["pos"].split())
     return x, y
+
+
+def render(screen, map_f, m):
+    screen.blit(pygame.image.load(map_f), (0, 0))
+    font = pygame.font.Font(None, 38)
+    text = m
+    string_rendered = font.render(f'Текущий тип карты: {text}', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = 10
+    screen.blit(string_rendered, intro_rect)
+    string_rendered = font.render(f'Для смены нажмите T', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = 40
+    screen.blit(string_rendered, intro_rect)
+    string_rendered = font.render(f'Для поиска нажмите F', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = 70
+    screen.blit(string_rendered, intro_rect)
+
+
+class Find(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.get_address = False
+        self.address = ''
+        self.initUI()
+
+    def initUI(self):
+        self.n, self.button_ok = QInputDialog.getText(self,
+                                                      'Введите полный адрес',
+                                                      'Введите полный адрес объекта',
+                                                      QLineEdit.Normal)

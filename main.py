@@ -1,26 +1,10 @@
 import pygame
+from PyQt5.QtWidgets import *
 from func import *
-
-
-def render(screen, map_f, m):
-    screen.blit(pygame.image.load(map_f), (0, 0))
-    font = pygame.font.Font(None, 38)
-    text = m
-    string_rendered = font.render(f'Текущий тип карты: {text}', 0, pygame.Color('white'))
-    intro_rect = string_rendered.get_rect()
-    intro_rect.x = 610
-    intro_rect.y = 10
-    screen.blit(string_rendered, intro_rect)
-    string_rendered = font.render(f'Для смены нажмите T', 0, pygame.Color('white'))
-    intro_rect = string_rendered.get_rect()
-    intro_rect.x = 610
-    intro_rect.y = 40
-    screen.blit(string_rendered, intro_rect)
-
 
 address = 'Тамбов ул. Мичуринская д. 112В'
 address_ll = list(get_coords(address))
-size = 10
+size = 16
 k = 0.0001
 dop_m = {'map': 'схема', 'sat': 'спутник', 'sat,skl': 'гибрид'}
 m = 'map'
@@ -77,6 +61,15 @@ while running:
                     m = 'sat,skl'
                 elif m == 'sat,skl':
                     m = 'map'
+                save_picture(address_ll, size, m)
+            elif event.key == pygame.K_f or event.key == (pygame.K_f + pygame.KMOD_LSHIFT):
+                pygame.quit()
+                app = QApplication(sys.argv)
+                ex = Find()
+                address = ex.n
+                pygame.init()
+                screen = pygame.display.set_mode((1000, 450))
+                address_ll = get_coords(address)
                 save_picture(address_ll, size, m)
     screen.fill((0, 0, 0))
     render(screen, map_file, dop_m[m])
