@@ -1,6 +1,7 @@
 from func import *
 
 address = 'Тамбов ул. Мичуринская д. 112В'
+full_address = get_full_address(address)
 address_ll = list(get_coords(address))
 size = 16
 k = 0.0001
@@ -9,7 +10,7 @@ m = 'map'
 map_file = f'map.png'
 pt = ''
 pygame.init()
-screen = pygame.display.set_mode((1200, 450))
+screen = pygame.display.set_mode((1100, 450))
 save_picture(address_ll, size, m, pt)
 running = True
 while running:
@@ -70,17 +71,19 @@ while running:
                 app.quit()
                 ex, app = None, None
                 pygame.init()
-                screen = pygame.display.set_mode((1200, 450))
+                screen = pygame.display.set_mode((1100, 450))
                 address_ll = list(get_coords(address))
                 if pt == '':
                     pt = f'{address_ll[0]},{address_ll[1]}'
                 else:
                     pt += f'~{address_ll[0]},{address_ll[1]}'
                 save_picture(address_ll, size, m, pt)
+                full_address = get_full_address(address)
             elif event.key == pygame.K_q:
                 pt = ''
                 save_picture(address_ll, size, m, pt)
+                full_address = ''
     screen.fill((0, 0, 0))
-    render(screen, map_file, dop_m[m])
+    render(screen, map_file, dop_m[m], full_address)
     pygame.display.flip()
 pygame.quit()

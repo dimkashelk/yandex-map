@@ -39,31 +39,71 @@ def get_coords(place):
     return x, y
 
 
-def render(screen, map_f, m):
+def render(screen, map_f, m, address):
+    y = 10
     screen.blit(pygame.image.load(map_f), (0, 0))
     font = pygame.font.Font(None, 38)
     text = m
     string_rendered = font.render(f'Текущий тип карты: {text}', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
-    intro_rect.y = 10
+    intro_rect.y = y
     screen.blit(string_rendered, intro_rect)
+    y += 30
+    # Смена режима показа
     string_rendered = font.render(f'Для смены нажмите T', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
-    intro_rect.y = 40
+    intro_rect.y = y
     screen.blit(string_rendered, intro_rect)
+    y += 30
+    # Поиск по карте
     string_rendered = font.render(f'Для поиска нажмите F', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
-    intro_rect.y = 70
+    intro_rect.y = y
     screen.blit(string_rendered, intro_rect)
+    y += 30
     # Сброс поискового результата
     string_rendered = font.render(f'Сброс поискового результата (Q)', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
-    intro_rect.y = 100
+    intro_rect.y = y
     screen.blit(string_rendered, intro_rect)
+    y += 30
+    # Полный адрес
+    string_rendered = font.render(f'Полный адрес объекта:', 0, pygame.Color('white'))
+    intro_rect = string_rendered.get_rect()
+    intro_rect.x = 610
+    intro_rect.y = y
+    screen.blit(string_rendered, intro_rect)
+    y += 30
+    for i in range(0, len(address), 32):
+        string_rendered = font.render(f'{address[i:i + 32]}', 0, pygame.Color('white'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.x = 610
+        intro_rect.y = y
+        screen.blit(string_rendered, intro_rect)
+        y += 30
+
+
+def get_full_address(address):
+    apikey = "40d1649f-0493-4b70-98ba-98533de7710b"
+    map_request = f"https://geocode-maps.yandex.ru/1.x/?" \
+        f"geocode={address}&" \
+        f"apikey={apikey}&" \
+        f"format=json"
+    response = requests.get(map_request)
+    if not response:
+        print('Try again...')
+        exit(0)
+    json = response.json()
+    dop = json['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+        'metaDataProperty']['GeocoderMetaData']['Address']['Components']
+    full = ''
+    for i in dop:
+        full += i['name'] + ', '
+    return full[:-2]
 
 
 class Find(QWidget):
@@ -76,6 +116,6 @@ class Find(QWidget):
 
     def initUI(self):
         self.n, self.button_ok = QInputDialog.getText(self,
-                                                      'Введите полный адрес',
-                                                      'Введите полный адрес объекта',
+                                                      'Введите адрес',
+                                                      'Введите адрес объекта',
                                                       QLineEdit.Normal)
