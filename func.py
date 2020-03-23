@@ -44,6 +44,7 @@ def render(screen, map_f, m, address, postal_index=False):
     screen.blit(pygame.image.load(map_f), (0, 0))
     font = pygame.font.Font(None, 38)
     text = m
+    # тип карты
     string_rendered = font.render(f'Текущий тип карты: {text}', 0, pygame.Color('white'))
     intro_rect = string_rendered.get_rect()
     intro_rect.x = 610
