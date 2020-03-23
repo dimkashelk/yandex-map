@@ -80,6 +80,8 @@ while running:
                     pt += f'~{address_ll[0]},{address_ll[1]}'
                 save_picture(address_ll, size, m, pt)
                 full_address = get_full_address(address)
+                postal_index = False
+                pt = ''
             elif event.key == pygame.K_q:
                 pt = ''
                 save_picture(address_ll, size, m, pt)
