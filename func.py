@@ -4,11 +4,13 @@ import pygame
 from PyQt5.QtWidgets import *
 
 
-def save_picture(addr, s, m):
+def save_picture(addr, s, m, pt=''):
     map_request = f"http://static-maps.yandex.ru/1.x/?" \
         f"ll={','.join(map(str, addr))}&" \
         f"l={m}&" \
         f"z={s}"
+    if pt != '':
+        map_request += f'&pt={pt}'
     response = requests.get(map_request)
     if not response:
         print("Ошибка выполнения запроса:")
