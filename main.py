@@ -1,5 +1,3 @@
-import pygame
-from PyQt5.QtWidgets import *
 from func import *
 
 address = 'Тамбов ул. Мичуринская д. 112В'
