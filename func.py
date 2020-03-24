@@ -3,6 +3,8 @@ import sys
 import pygame
 from PyQt5.QtWidgets import *
 
+koef = {17: 2.3177083333333332e-05}
+
 
 def save_picture(addr, s, m, pt=''):
     map_request = f"http://static-maps.yandex.ru/1.x/?" \
@@ -133,8 +135,11 @@ def get_postal_code(address):
         print('Try again...')
         exit(0)
     json = response.json()
-    return json['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-        'metaDataProperty']['GeocoderMetaData']['Address']['postal_code']
+    try:
+        return json['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+            'metaDataProperty']['GeocoderMetaData']['Address']['postal_code']
+    except KeyError:
+        return False
 
 
 class Find(QWidget):
@@ -150,3 +155,13 @@ class Find(QWidget):
                                                       'Введите адрес',
                                                       'Введите адрес объекта',
                                                       QLineEdit.Normal)
+
+
+def take_new_place(size, coords1, coords2):
+    if size == 17:
+        x_sdv = coords1[0] - coords2[0]
+        y_sdv = coords1[1] - coords2[1]
+        x_sdv *= koef[17]
+        y_sdv *= koef[17]
+        return x_sdv / 3, y_sdv / 4
+    return 0, 0

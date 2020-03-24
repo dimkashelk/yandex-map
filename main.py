@@ -1,4 +1,5 @@
 from func import *
+from copy import deepcopy
 
 address = 'Тамбов ул. Мичуринская д. 112В'
 full_address = get_full_address(address)
@@ -91,6 +92,17 @@ while running:
                     postal_index = get_postal_code(address)
                 else:
                     postal_index = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                dop = list(take_new_place(size, [300, 225], list(event.pos)))
+                dop_address = deepcopy(address_ll)
+                dop_address[0] -= dop[0]
+                dop_address[1] += dop[1]
+                full_address = get_full_address(','.join(map(str, dop_address)))
+                pt = f'{dop_address[0]},{dop_address[1]}'
+                if postal_index:
+                    postal_index = get_postal_code(full_address)
+                save_picture(address_ll, size, m, pt)
     screen.fill((0, 0, 0))
     render(screen, map_file, dop_m[m], full_address, postal_index)
     pygame.display.flip()

@@ -4,6 +4,7 @@
     <list default="true" id="d966af03-0b5b-4d1c-9ae7-ba0c97970288" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,22 +13,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-599">
-              <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="310">
+              <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
               <folding>
-                <element signature="e#976#1126#0" />
-                <element signature="e#1116#1245#0" />
-                <element signature="e#977#1088#0" />
-                <element signature="e#1156#1261#0" />
-                <element signature="e#1321#1426#0" />
-                <element signature="e#1488#1594#0" />
-                <element signature="e#2573#2782#0" />
-                <element signature="e#2401#3033#0" />
-                <element signature="e#3042#3137#0" />
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#626#775#0" />
+                <element signature="e#1051#1236#0" />
+                <element signature="e#1299#1482#0" />
+                <element signature="e#1542#1727#0" />
+                <element signature="e#1789#1972#0" />
+                <element signature="e#2081#2313#0" />
+                <element signature="e#2422#3122#0" />
+                <element signature="e#3181#3276#0" />
+                <element signature="e#3335#3478#0" />
               </folding>
             </state>
           </provider>
@@ -36,12 +38,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/func.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="928">
-              <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+            <state relative-caret-position="1047">
+              <caret line="141" column="20" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#27#568#0" />
-                <element signature="e#1932#2378#0" />
+                <element signature="e#1413#3677#0" />
+                <element signature="e#3715#4285#0" />
+                <element signature="e#4837#5269#0" />
               </folding>
             </state>
           </provider>
@@ -183,7 +186,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584967148094</updated>
-      <workItem from="1584967149437" duration="15152000" />
+      <workItem from="1584967149437" duration="15298000" />
+      <workItem from="1585029553893" duration="2310000" />
+      <workItem from="1585044566044" duration="1108000" />
+      <workItem from="1585049481284" duration="4980000" />
     </task>
     <task id="LOCAL-00001" summary="Часть №1">
       <created>1584967408903</created>
@@ -262,11 +268,25 @@
       <option name="project" value="LOCAL" />
       <updated>1584982743733</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Часть №10">
+      <created>1584982989745</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1584982989745</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Часть №10 fixed">
+      <created>1584983072433</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1584983072433</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15152000" />
+    <option name="totallyTimeSpent" value="23696000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -278,12 +298,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
@@ -297,11 +317,11 @@
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +352,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -348,11 +382,13 @@
     <MESSAGE value="Часть №7" />
     <MESSAGE value="Часть №8" />
     <MESSAGE value="Часть №9" />
-    <option name="LAST_COMMIT_MESSAGE" value="Часть №9" />
+    <MESSAGE value="Часть №10" />
+    <MESSAGE value="Часть №10 fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Часть №10 fixed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yandex_map$main.coverage" NAME="main Coverage Results" MODIFIED="1584982684606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/yandex_map$func.coverage" NAME="func Coverage Results" MODIFIED="1584982678830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yandex_map$main.coverage" NAME="main Coverage Results" MODIFIED="1585056207725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yandex_map$func.coverage" NAME="func Coverage Results" MODIFIED="1585044829046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/pygame/__init__.py">
@@ -360,30 +396,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+        <state relative-caret-position="1047">
+          <caret line="141" column="20" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#27#568#0" />
-            <element signature="e#1932#2378#0" />
+            <element signature="e#1413#3677#0" />
+            <element signature="e#3715#4285#0" />
+            <element signature="e#4837#5269#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-599">
-          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        <state relative-caret-position="310">
+          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
           <folding>
-            <element signature="e#976#1126#0" />
-            <element signature="e#1116#1245#0" />
-            <element signature="e#977#1088#0" />
-            <element signature="e#1156#1261#0" />
-            <element signature="e#1321#1426#0" />
-            <element signature="e#1488#1594#0" />
-            <element signature="e#2573#2782#0" />
-            <element signature="e#2401#3033#0" />
-            <element signature="e#3042#3137#0" />
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#626#775#0" />
+            <element signature="e#1051#1236#0" />
+            <element signature="e#1299#1482#0" />
+            <element signature="e#1542#1727#0" />
+            <element signature="e#1789#1972#0" />
+            <element signature="e#2081#2313#0" />
+            <element signature="e#2422#3122#0" />
+            <element signature="e#3181#3276#0" />
+            <element signature="e#3335#3478#0" />
           </folding>
         </state>
       </provider>
