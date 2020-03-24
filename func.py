@@ -1,7 +1,9 @@
+import math
 import requests
 import sys
 import pygame
 from PyQt5.QtWidgets import *
+from pprint import pprint
 
 koef = {17: 2.3177083333333332e-05}
 
@@ -41,7 +43,7 @@ def get_coords(place):
     return x, y
 
 
-def render(screen, map_f, m, address, postal_index=False):
+def render(screen, map_f, m, address, postal_index=False, org_info=False):
     y = 10
     screen.blit(pygame.image.load(map_f), (0, 0))
     font = pygame.font.Font(None, 38)
@@ -103,6 +105,20 @@ def render(screen, map_f, m, address, postal_index=False):
         intro_rect.y = y
         screen.blit(string_rendered, intro_rect)
         y += 30
+    if org_info:
+        string_rendered = font.render(f'Название организации:', 0, pygame.Color('white'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.x = 610
+        intro_rect.y = y
+        screen.blit(string_rendered, intro_rect)
+        y += 30
+        for i in range(0, len(address), 32):
+            string_rendered = font.render(f'{org_info[i:i + 32]}', 0, pygame.Color('white'))
+            intro_rect = string_rendered.get_rect()
+            intro_rect.x = 610
+            intro_rect.y = y
+            screen.blit(string_rendered, intro_rect)
+            y += 30
 
 
 def get_full_address(address):
@@ -165,3 +181,43 @@ def take_new_place(size, coords1, coords2):
         y_sdv *= koef[17]
         return x_sdv / 3, y_sdv / 4
     return 0, 0
+
+
+def lonlat_distance(a, b):
+    degree_to_meters_factor = 111 * 1000  # 111 километров в метрах
+    a_lon, a_lat = a
+    b_lon, b_lat = b
+    # Берем среднюю по широте точку и считаем коэффициент для нее.
+    radians_lattitude = math.radians((a_lat + b_lat) / 2.)
+    lat_lon_factor = math.cos(radians_lattitude)
+    # Вычисляем смещения в метрах по вертикали и горизонтали.
+    dx = abs(a_lon - b_lon) * degree_to_meters_factor * lat_lon_factor
+    dy = abs(a_lat - b_lat) * degree_to_meters_factor
+    # Вычисляем расстояние между точками.
+    distance = math.sqrt(dx * dx + dy * dy)
+    return distance
+
+
+def get_first_org(coords):
+    search_api_server = "https://search-maps.yandex.ru/v1/"
+    api_key = "dda3ddba-c9ea-4ead-9010-f43fbc15c6e3"
+    search_params = {
+        "apikey": api_key,
+        "text": get_full_address(coords),
+        "lang": "ru_RU",
+        "ll": coords,
+        "type": "biz",
+        "spn": "0.00031799999209092267,0.00031799999209092267",
+        "results": 1
+    }
+    res = requests.get(search_api_server, params=search_params)
+    if not res:
+        print('Not correct answer')
+        print(res)
+        exit(0)
+    json_res = res.json()
+    try:
+        return (json_res['features'][0]['properties']['CompanyMetaData']['name'],
+                json_res['features'][0]['geometry']['coordinates'])
+    except IndexError:
+        return (False, False)

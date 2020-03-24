@@ -15,6 +15,7 @@ pygame.init()
 screen = pygame.display.set_mode((1100, 450))
 save_picture(address_ll, size, m, pt)
 running = True
+org_info = False
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -87,6 +88,8 @@ while running:
                 pt = ''
                 save_picture(address_ll, size, m, pt)
                 full_address = ''
+                postal_index = False
+                org_info = False
             elif event.key == pygame.K_i:
                 if not postal_index:
                     postal_index = get_postal_code(address)
@@ -103,7 +106,18 @@ while running:
                 if postal_index:
                     postal_index = get_postal_code(full_address)
                 save_picture(address_ll, size, m, pt)
+            elif event.button == 3:
+                if size == 17:
+                    dop = list(take_new_place(size, [300, 225], list(event.pos)))
+                    dop_address = deepcopy(address_ll)
+                    dop_address[0] -= dop[0]
+                    dop_address[1] += dop[1]
+                    org_name, org_coords = get_first_org(','.join(map(str, dop_address)))
+                    org_info = org_name
+                    if org_info:
+                        pt = f'{org_coords[0]},{org_coords[1]}'
+                        save_picture(address_ll, size, m, pt)
     screen.fill((0, 0, 0))
-    render(screen, map_file, dop_m[m], full_address, postal_index)
+    render(screen, map_file, dop_m[m], full_address, postal_index, org_info)
     pygame.display.flip()
 pygame.quit()
